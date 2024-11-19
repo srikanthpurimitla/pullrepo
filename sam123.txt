@@ -1,0 +1,759 @@
+1)Demonstrate the creation of repository remotely.
+Step 1: Creating a remote repository in GitHub.
+ 
+Step 2: Go to your working directory and open the Gitbash and run as administrator.  Configure your Github email and user name.
+Syntax: git config  –global user.email “mail”
+	git config –global user.name “ name”
+ 
+Step 3: Copy the remote repository link 
+ 
+Step 4: Clone the repository locally in GitBash
+Syntax: git clone <ur> 
+Step 5: Change the repository to your created directory 
+ 
+Step 6: Check git status after creating a directory in local machine
+Syntax: git status
+ 
+Step 7: Create an empty file using touch command
+ 
+Step 8: Edit the file using vi text editor
+ 
+Content of the file : this is file1
+ 
+Step 9: check the content of the file1
+ 
+Step 10: Check git status after creating a file 
+Step 11: Stage the file1 to staging area using git add
+Syntax: git add .
+ 
+Step 12: Check status after staging the file
+ 
+Step 13: Check git log before committing the file
+Syntax : git log
+ 
+Step 14 : Commit all the changes
+ 
+Step 15: Check status after committing changes
+ 
+Step 16: Check git history 
+Step 17 : Create another file2
+ 
+Step 18 : Stage this file2 using git add
+ 
+Step 19: check difference between the staging area and the working area
+Syntax: git diff
+ 
+Step 20: Check the difference between the staging and remote repository
+Syntax: git diff --staged
+ 
+Step 21: Check the difference between working area and remote repository
+Syntax: git diff HEAD
+ 
+Step 22: Check git status after adding file2 to staging area 
+Step 23: Commit the changes
+ 
+Step 24: check git log for the last 2 commits
+ 
+Step 25: Check git log  to print the hashes
+Syntax: git log –pretty=”%h:%s”
+ 
+Step 27: To show  a summary of commits with one line per commit
+Syntax: git log --oneline
+ 
+Step 28: Print the details of the latest commit to which head is pointing to
+Syntax: git show HEAD
+ 
+Step 29: To show the details of the previous commit relative to the commit what HEAD’S pointing to
+Syntax: git show HEAD~1
+ 
+Step 30 : Push the changes to the remote repository
+ 
+Step 30: Check updates to the remote repository
+ 
+
+
+
+
+
+
+
+
+
+
+
+2. Demonstrate the creation of repository locally.
+Step1: Create a directory
+ 
+Step 2: Moving into directory
+ 
+Step 3: Initializing into that directory
+ 
+Step 4: Checking git status and lof
+ 
+ 
+Step 5:  Checking the files and creating the file into repository
+ 
+ 
+Step 6 : Checking the status 
+Step 7: Adding the files into the staging area
+ 
+Step 8: Commiting the changes
+ 
+Step 9: Check git log
+ 
+Step 10: Connecting the local repository to the remote repository
+ 
+Step 11: Pushing the files into the remote repository
+ 
+Step 12: checking the update done in the remote repository 
+ 
+
+
+
+
+
+
+
+
+
+
+
+3.Demonstrate the usage of pull and fetch commands.
+Step1 : Creating the directory to perform pull commands
+ 
+ 
+Step 2: Moving into that directory 
+ 
+Step 3: Initializing it as a repository
+ 
+Step 4: Checking the status of the repository
+ 
+Step 5:  Create a new repository in the remote repository
+ 
+Step 6: Create few files in remote repository and commit 
+ 
+Step 7: Connecting the remote repository with the local  repository
+ 
+Step 8: Pulling the files from remote repository to local repository
+ 
+Step 9: Change the branch to target branch
+ 
+Step 10 : Checking the files 
+ 
+Step 11: Create a new file locally and edit the content
+ 
+ 
+ 
+
+ 
+Step 12: Check the status after creating a file locally
+
+
+
+
+
+Step 13: Edit the existing  file which was pulled from remote repository
+ 
+Step 14: Check git status after modifying the files
+ 
+Step 15: Stage the files  to staging area
+ 
+Step 16: Check git status after staging the files(before commit) 
+Step 17: Commit the changes
+ 
+Step 18 : Now create a new file in remote repository
+ 
+Step 19: Modify a file remotely 
+ 
+Step 20: Now check whether the updations of the file were updated in local machine or not
+ 
+
+
+
+Step 21: fetch the files from remote repository 
+Step22 :Merge the changes into local branch 
+Step 23: check the list of files in local branch
+ 
+Step 24: Check the updated file content
+ 
+Step 25: Push the changes into remote repository
+ 
+Step 26: Check the updates from the browser
+ 
+
+
+
+
+
+
+4.Demonstrate the usage of merge and rebase
+Merge
+Step1 : Creating the directory and move into that directory and git initialize it
+ 
+Step 2: Create a remote repository and include few files(main)
+ 
+Step 3:Create a feature branch
+ 
+Step 4: Connecting the local repository to the remote repository
+ 
+
+Step 5:Connecting the local repository to the remote repository
+ 
+Step 6: Check status
+ 
+Step 7: Creating the new branch and switching all the file from present branch to created branch
+ 
+Step 8: Modify files in feature -branch
+ 
+Step 9: checking status
+ 
+Step 10: Stage the file and check status
+ 
+Step 11: Committing the changes 
+Step 12: Check the status of feature-branch after committing the changes
+ 
+Step 13: Check git history
+ 
+Step 14: Checkout to main branch and merge the feature-branch in the main branch
+ 
+Step 15: Check git history
+ 
+
+
+
+
+Step 16: push the changes into the remote repository
+ 
+Step 17: Check for the changes updated in web version of github
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REBASE
+Step 1: Creating and Moving into that new directory
+ 
+Step 2: git initialize
+ 
+Step 3: Remote repository creation 
+ 
+Step 4: Create few files in main branch of remote repossitory
+ 
+Step 5:Create a feature branch and copy the url of rebaserepo 
+ 
+ 
+Step 6: Connecting the remote repository with local repository 
+ 
+Step3: Pull the code into local machine (M1) 
+Step 4: Checkout to main ,check the list of files and check the status
+ 
+Step 5: Create a new instance And in mobaxterm tool as developer machine 2(M2) create a new session
+ 
+ 
+ 
+Step 6: Create a new directory in ec2 instance (M2) and move into that directory,git initialize it
+ 
+ 
+ 
+Step7: Configure mail and any username
+ 
+Step 8: Copy the url of github (remote repository)
+ 
+Step9:  Connecting the remote repository to the ec2 instance
+ 
+Step 10: pull the code into ec2 instance
+ 
+Step 11: checkout to main branch
+ 
+Step 12: check git history
+ 
+In M2
+Step 13: Modify the file
+ 
+This is existing file  
+Modify this file
+ 
+Step14: Check git status(after modifications)
+ 
+Step 15: Stage the files and commit the changes
+ 
+Step 16: Check git history in M1 (main) 
+Step 17: Checkout to feature-branch and modify the file, stage the file and check the status and check git history
+ 
+Step 18: Commit the changes in feature branch 
+ Step19: In M2 , modify a file ,stage it and commit the changes  
+Step20 : Push the changes into remote repository ,it will ask for username and password
+ 
+Step21: For token In github>Settings>Developer Settings>Personal access token> token(classic)>
+Token(classic)>Generate a token>classic token >login & password>expiration->NO >Choose all the checkboxes>click generate token>copy it
+ 
+ 
+ 
+ 
+ 
+Step 22: push the changes into Remote repository
+ 
+Step 23: Check updates in web github
+ 
+Step24: In M2 , pull the code from remote repository
+ 
+Step 25: Resolve the merge conflicts, after talking to both the developers (M1 &M2)
+ 
+ 
+Step26: Check the status after resolving merge conflicts
+ 
+Step 27: Stage the file and commit the changes
+ 
+Step 28: Check the git history
+ 
+Step 29: Checkout to feature-branch and check the status
+ 
+Step 30: Check git history in feature-branch
+ 
+Step 31: Rebase the main branch in feature-branch
+ 
+Step 32: Checkout to main 
+Step 33: Check the git history in main branch
+ 
+Step 34: Merge the feature-branch in main branch
+ 
+Step 35: now check git history in main branch 
+Step 36: Stop the instance
+ 
+Step 37: checkout to main branch and git history
+
+Step 38: Push the changes into remote repository and check remote repository for updates  
+5. Demonstrate the creation of virtual machine, Installations of JDK, Git, Maven, Tomcat and creation of simple maven application.
+Creation of virtual machine in AWS:
+i. Log in to AWS Management Console by providing AWS account root email and password, authenticate it
+ 
+ 
+
+ 
+ 
+ii. Click on EC2 Instance and click on launch instance button
+ 
+iii. create a new virtual machine that needs name of the machine in the Name and tag section 
+iv. Create or choose a key pair to securely connect to your instance.
+a. If you don’t have a key pair then select Create a new key pair and name it and later download the .pem file. This file is important for connecting to your instance in other environment like mobaXterm
+b. If you already have a key pair then select it from the drop-down menu.
+c. Leave the remaining settings default and then click on the Launch Instance
+
+ 
+ 
+ 
+ 
+v. Start the instance
+ 
+Vi . Edit the Inbound rules in the security groups of EC2 Instance
+ 
+ 
+vii. Now click on the save rules button
+ 
+ 
+ec2 instance is created
+
+
+Installation of Git:
+i.	Open mobaXterm and login with your ip address and private key
+ 
+ii.Update all installed packages upto date
+iii.  Install git from linux systems 
+ 
+iv. check version of git to verify whether git is installed or not
+ 
+
+Installation of JDK:
+i. Installing the JDK in virtual machine
+ 
+ 
+ii. To check the version of the installed JDK 
+ 
+iii. We need to set the environment variable for installed JDK in ec2-user edit .bashrc file and export it immediately using 
+syntax: source .bashrc
+ 
+ 
+ 
+iv. set environment variables in root user also and check the java version
+ 
+ 
+ 
+Installation of Tomcat:
+i. Copy the address from tomcat downloads website
+ 
+ii. Installaing  tomcat in the opt directory using wget command
+  
+iii. check the files in the directory and Extract the downloaded tar file 
+iv. Check the file in the directory after completion of extraction
+    Rename the extracted file to tomcat
+ 
+v. Create the link to start the tomcat server and stop tomcat
+ 
+ 
+vi. check if tomcat server has started in browser using <publicip>:8080 
+ 
+vii.  Move into the conf directory and check for the context.xml files  
+viii. Move into the conf directory and check for the context.xml files
+ 
+ 
+ix. Move into the conf directory and check for the context.xml files
+ 
+ 
+ 
+x. Add roles and user
+ 
+xi. Start the tomcat using the command “start-tomcat”
+ 
+xii. Open the browser and search for <publicip>:port then it opens tomcat manager app and prove the user name and password as “admin”
+
+
+ 
+xiii. Finally manager opened
+ 
+xiv. Check the files in the conf directory of tomcat and open server.xml file and change the port number of tomcat from 8080 to 9090
+ 
+ 
+ 
+ 
+xv. stop tomcat and start it again
+ 
+ 
+xvii. browser check using <publicip>:8080(it will not open)
+search using <publicip>:9090( finally opens)
+
+ 
+ 
+Installation of Maven:
+i. Installing the Maven in opt directory using wget command
+ 
+ii. Checking the files in the directory
+ 
+iii. Extract the downloaded tar file
+ 
+iv. Check the files in the directory after completion of extraction 
+ 
+v. Rename the extracted file to maven
+ 
+vi. We need to set the environment variables of ec2 user in .bashrc file to make Maven available globally and export variable immediately
+ 
+ 
+ 
+ 
+ 
+vii. We need to set the environment variables of ec2 user in .bashrc file to make Maven available globally and export variable immediately
+ 
+ 
+viii. check version of installed maven
+ 
+Creating the sample maven application:
+i. Create the maven application using mvn command
+ 
+ 
+ 
+ii. Move into the created sample app
+ 
+iii. Building the maven application using mvn command
+ 
+iv. Deploying the maven application to tomcat server
+ 
+ 
+v. Start the tomcat server using the url(<publicip>:9090) and check the output
+ 
+Deploying manually
+ 
+ 
+ Download sample-webapp.war file and deploy it, check for the output 
+ 
+ 
+
+ 
+
+
+
+6. Demonstrate the Installation of Jenkins, Creation of Maven application in Jenkins and deploying it to tomcat server.
+i. Start your instance and check for Jenkins official website 
+ 
+ii.Download and save the Jenkins repository configuration file to the system YUM repository directory.
+ 
+iii. Import Jenkins GPG key to verify the authenticity and integrity of packages before installation
+ 
+iv. Update all installed packages upto date and available for the enabled repositories
+ 
+v. Install Jenkins using the YUM package manager
+ 
+vi. Enable Jenkins to start automatically
+ 
+vii. check the status
+ 
+viii.  Start the Jenkins service and make it is accessible through browser using the port 8080
+ 
+ 
+ix. Get the initial admin password from this file and use it to log in it and complete Jenkins setup
+ 
+x. Copy the output of above command and paste it in the Administrator password and then click on continue
+ 
+ 
+xi. In Customize Jenkins, Choose the “Select plugins to install” option
+
+ 
+xii. Unselect all the selected items and click on the install 
+xiii. Enter username, password and Full name as Registration number and click on save and continue to continue the process
+
+ 
+xiv. Click on Save and Finish button 
+xv. Jenkins setup is completed. Now click on Start using Jenkins button to start the Jenkins
+ 
+xvi. In Jenkins dashboard click on Manage Jenkins and select Nodes and click on configure monitor
+ 
+xvii. Change all the threshold values to ‘0’ and click on Apply and then Save
+ 
+xviii. In Build Executor Status, Built-in-Node status changes from offline to online
+x 
+xix. Create a freestyle project:
+	go to dashboard>create a job>give name to new item and click on ok
+ 
+ 
+xx. Now configure it. Go to dashboard>configure>general.
+ 
+xxi.Build now
+ 
+xxii. now create a new repository “Hello-world-repo”
+ 
+xxiii. In mobaxterm go to opt directory and change directory to sample-webapp
+ 
+ 
+ 
+xxiv. Connect the remote repository to ec2 instance
+ 
+xxv. Push it to github
+	a.checkout to main
+ 
+	b. check git status
+ 
+	c. commit changes
+ 
+	d. push it to origin/main
+ 
+	e. check github web  for updates
+ 
+
+xxvi. Configure Jenkins In Plugins choose available Plugins option and search for the required plugins and click on install button 
+xxvii. It displays all the installing plugins
+
+ 
+ 
+xxviii. Configure the installed plugins in tools section of Manage Jenkins
+In JDK installation click on add JDK and provide Name and JAVA_HOME details
+ 
+xxix. In Git installations click on add Git and provide Name and Path to Git executable details
+In Maven installation click on add maven and provide Name and MAVEN_HOME details and later click on Apply and then Save buttons
+ 
+Creating a maven project in Jenkins manually:
+i. In Jenkins Dashboard, click on New Item. Enter item name and select item type as Maven Project and click on OK button
+
+ 
+ii. Configure the maven project.  Select source code management as Git and enter repository URL. Leave the other settings default for now.
+
+
+ 
+ 
+ 
+iii. In Build we need to enter “clean install” in Goals and Options box
+iv. Click on Apply and then Save button
+ 
+v. Click on Apply and then Save button
+
+ 
+vi. After building the project output can be viewed in console output. The output is archived in the path mentioned in the console. Therefore copy the path
+ 
+vii. Changing the directory to target to view the .war file
+ 
+ 
+viii. Deploy the maven project into the tomcat server using copy command
+ 
+ix. Start the tomcat using tomcat-start command
+
+ 
+x. Open tomcat manager app using the url: <publicip>:9090
+ 
+xi. Click on the created project and output of the project is displayed in new tab
+ 
+Creating a maven project in Jenkins automatically:
+i. In Jenkins Dashboard, Choose Manage Jenkins and select Plugins to install required Plugins
+ii. In Jenkins Dashboard, Choose Manage Jenkins and select Plugins to install required Plugins
+
+ 
+iii. Displays the installed plugins and no configuration is required for “Deploy to container” plugin
+ 
+iv. To add credentials move to Manage Jenkins and select credentials option and in credentials, select on system .In system click on Global credentials(unrestricted).
+ 
+v. Provide Username, Password, ID and Description. Click on Create button
+
+ 
+ 
+vi. Now configure the previous project. In post build actions select deploy war/ear to container 
+vii. select tomcat version as tomcat 9.0 
+ 
+viii. In Github change some source code
+ 
+ix. Now build the application
+ 
+x. Check the output 
+xi. Automate the build process using pollscm
+ 
+ 
+xii. Check the output
+ 
+
+
+
+
+Conversation opened. 1 read message. 
+
+Skip to content
+Using Gmail with screen readers
+in:sent 
+2 of 187
+Document from No One Is Like Me 😎
+Inbox
+
+Y21ACB423 <srikanthpurimitla2k19@gmail.com>
+Attachments
+Sat 9 Nov, 12:52 (10 days ago)
+to me
+
+Basic Installations.txt 
+One attachment
+  • Scanned by Gmail
+yum  update
+
+1.	Install git
+
+sudo yum install git
+
+2.	Install jdk -17
+
+// search for java 17 Ec2
+
+sudo yum install java-17-amazon-corretto-devel
+
+// Set Environment variables
+
+in .bashrc of ec2-user and root
+
+export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
+
+source .bashrc
+
+3.	Install Tomcat
+
+sudo su 
+
+wget the tar.gz archive  in /opt
+
+// Search for Apache tomcat 9 tar
+
+wget  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.91/bin/apache-tomcat-9.0.91.tar.gz
+
+tar -xvzf apache-tomcat-9.0.01.tar.az
+
+mv apache-tomcat-9.0.01  tomcat
+
+ln -s /opt/tomcat/bin/startup.sh /usr/bin/tomcat-start
+
+ln -s /opt/tomcat/bin/shutdown.sh /usr/bin/tomcat-stop
+
+Search for context.xml in tomcat. 
+In /opt/tomcat/webapps/host-manager/META-INF/context.xml and  in /opt/tomcat/webapps/manager/META-INF/context.xml comment the following
+<Context>
+…
+    <!— <Valve className="org.apache.catalina.valves.RemoteAddrValve" 
+           allow="127\.\d+\.\d+\.\d+|::1"  deny=""/> --> 
+	  	…
+</Context>
+
+In conf/tocat-users.xml
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+ 
+4.	Install maven
+
+sudo su
+
+Get the maven repository into /opt
+
+wget https://dlcdn.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
+
+tar -zxvf apache-maven-3.9.8-bin.tar.gz
+
+mv apache-maven-3.9.8 maven
+
+check maven version /opt/maven/bin/mvn -v
+
+In .bashrc of ec2-user and root
+
+export M2_HOME=/opt/maven
+export M2=/opt/maven/bin
+
+export PATH=$PATH:$M2
+
+source .bashrc
+
+create a application directory
+
+mvn archetype:generate -DgroupId=com.example -DartifactId=sample-webapp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+cd sample-webapp
+
+Build it
+
+mvn package
+
+sudo su
+
+cp ./target/sample-webapp.war /opt/tomcat/webapps
+
+Test it from http://<publicip>:8080/sample-webapp
+
+a.	sudo su  
+b.	wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+c.	rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+d.	sudo yum upgrade
+e.	yum install jenkins -y
+f.	systemctl enable jenkins
+g.	systemctl start jenkins
+2.	Connect to the Jenking using Browser and the url: <Pulic IP>:8080
+3.	Copy admin initial password from the location /var/lib/jenkins/secrets/initialAdminPassword and paste it in password box then click on continue.
+Basic Installations.txt
+Displaying Basic Installations.txt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
