@@ -1,0 +1,635 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "554451c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import nltk"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "1261c7ed",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package gutenberg to\n",
+      "[nltk_data]     C:\\Users\\DurgaBhavani\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Package gutenberg is already up-to-date!\n"
+     ]
+    }
+   ],
+   "source": [
+    "nltk.download('gutenberg')\n",
+    "from nltk.corpus import gutenberg as cg\n",
+    "import re"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "057515c1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "---text file output--\n",
+      "This is Bapatla Engineering College\n",
+      "Welcome to NLP class\n",
+      "--local variable output--\n",
+      "Hello welcome to natural language processing subject.Bapatla Engineering College,Bapatla\n",
+      "--corpus output--\n",
+      "[The Adventures of Buster Bear by Thornton W. Burgess 1920]\r\n",
+      "\r\n",
+      "I\r\n",
+      "\r\n",
+      "BUSTER BEAR GOES FISHING\r\n",
+      "\r\n",
+      "\r\n",
+      "Buster Bear yawned as he lay on his comfortable bed of leaves and\r\n",
+      "watched the first early morning sunbeams creeping through the Green\r\n",
+      "Forest to chase out the Black Shadows. Once more he yawned, and slowly\r\n",
+      "got to his feet and shook himself. Then he walked over to a big\r\n",
+      "pine-tree, stood up on his hind legs, reached as high up on the trunk of\r\n",
+      "the tree as he could, and scratched the bark with his great claws. After\r\n",
+      "that he yawned until it seemed as if his jaws would crack, and then sat\r\n",
+      "down to think what he wanted for breakfast.\r\n",
+      "\r\n",
+      "While he sat there, trying to make up his mind what would taste best, he\r\n",
+      "was listening to the sounds that told of the waking of all the little\r\n",
+      "people who live in the Green Forest. He heard Sammy Jay way off in the\r\n",
+      "distance screaming, \"Thief! Thief!\" and grinned. \"I wonder,\" thought\r\n",
+      "Buster, \"if some one has stolen Sammy's breakfast, or if he has stolen\r\n",
+      "th\n"
+     ]
+    }
+   ],
+   "source": [
+    "#various ways of getting raw data\n",
+    "def fileread():\n",
+    "    filecontents=open(\"D:\\\\rough\\\\sample.txt\",\"r\").read()\n",
+    "    return filecontents\n",
+    "def localtextvalue():\n",
+    "    text=\"Hello welcome to natural language processing subject.Bapatla Engineering College,Bapatla\"\n",
+    "    return text\n",
+    "def readcorpus():\n",
+    "    raw_content_cg=cg.raw(\"burgess-busterbrown.txt\")\n",
+    "    return raw_content_cg[0:1000]\n",
+    "if __name__==\"__main__\":\n",
+    "    print(\"---text file output--\")\n",
+    "    print(fileread())\n",
+    "    print(\"--local variable output--\")\n",
+    "    print(localtextvalue())\n",
+    "    print(\"--corpus output--\")\n",
+    "    print(readcorpus())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "893190c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "i am a person.do you know what is time now?\n"
+     ]
+    }
+   ],
+   "source": [
+    "#lowercase conversion\n",
+    "def wordlowercase():\n",
+    "    text=\"I am a person.Do you know what is time now?\"\n",
+    "    return text.lower()\n",
+    "print(wordlowercase())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "6a8a3f10",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "---text file output--\n",
+      "This is Bapatla Engineering College\n",
+      "Welcome to NLP class\n",
+      "1\n",
+      "--local variable output--\n",
+      "Hello welcome to natural language processing subject.Bapatla Engineering College,Bapatla\n",
+      "1\n",
+      "--corpus output--\n",
+      "[The Adventures of Buster Bear by Thornton W. Burgess 1920]\r\n",
+      "\r\n",
+      "I\r\n",
+      "\r\n",
+      "BUSTER BEAR GOES FISHING\r\n",
+      "\r\n",
+      "\r\n",
+      "Buster Bear yawned as he lay on his comfortable bed of leaves and\r\n",
+      "watched the first early morning sunbeams creeping through the Green\r\n",
+      "Forest to chase out the Black Shadows. Once more he yawned, and slowly\r\n",
+      "got to his feet and shook himself. Then he walked over to a big\r\n",
+      "pine-tree, stood up on his hind legs, reached as high up on the trunk of\r\n",
+      "the tree as he could, and scratched the bark with his great claws. After\r\n",
+      "that he yawned until it seemed as if his jaws would crack, and then sat\r\n",
+      "down to think what he wanted for breakfast.\r\n",
+      "\r\n",
+      "While he sat there, trying to make up his mind what would taste best, he\r\n",
+      "was listening to the sounds that told of the waking of all the little\r\n",
+      "people who live in the Green Forest. He heard Sammy Jay way off in the\r\n",
+      "distance screaming, \"Thief! Thief!\" and grinned. \"I wonder,\" thought\r\n",
+      "Buster, \"if some one has stolen Sammy's breakfast, or if he has stolen\r\n",
+      "th\n",
+      "9\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package punkt to\n",
+      "[nltk_data]     C:\\Users\\DurgaBhavani\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Package punkt is already up-to-date!\n"
+     ]
+    }
+   ],
+   "source": [
+    "#sentence tokenization\n",
+    "nltk.download('punkt')\n",
+    "from nltk.tokenize import sent_tokenize as st\n",
+    "def fileread():\n",
+    "    filecontents=open(\"D:\\\\rough\\\\sample.txt\",\"r\").read()\n",
+    "    return filecontents\n",
+    "def localtextvalue():\n",
+    "    text=\"Hello welcome to natural language processing subject.Bapatla Engineering College,Bapatla\"\n",
+    "    return text\n",
+    "def readcorpus():\n",
+    "    raw_content_cg=cg.raw(\"burgess-busterbrown.txt\")\n",
+    "    return raw_content_cg[0:1000]\n",
+    "if __name__==\"__main__\":\n",
+    "    print(\"---text file output--\")\n",
+    "    filecontentdetails=fileread()\n",
+    "    print(filecontentdetails)\n",
+    "    st_list_rawfile=st(filecontentdetails)\n",
+    "    print(len(st_list_rawfile))\n",
+    "    print(\"--local variable output--\")\n",
+    "    localvardata=localtextvalue()\n",
+    "    print(localvardata)\n",
+    "    st_list_local=st(localvardata)\n",
+    "    print(len(st_list_local))\n",
+    "    print(\"--corpus output--\")\n",
+    "    fromcorpus=readcorpus()\n",
+    "    print(fromcorpus)\n",
+    "    st_list_corpus=st(fromcorpus)\n",
+    "    print(len(st_list_corpus))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "df590a72",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "stem is funnier than a bummer say the sushi love comput scientist.sh realli want to buy cars.sh told me angrily.\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Stemming for raw text\n",
+    "from nltk.stem import PorterStemmer\n",
+    "text=\"Stemming is funnier than a bummer says the sushi loving computer scientist.She really wants to buy cars.She told me angrily.\"\n",
+    "def stemmer_porter():\n",
+    "    port=PorterStemmer()\n",
+    "    return \" \".join([port.stem(i) for i in text.split()])\n",
+    "if __name__==\"__main__\":\n",
+    "    print(stemmer_porter())\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "efc5e1e0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package wordnet to\n",
+      "[nltk_data]     C:\\Users\\DurgaBhavani\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Package wordnet is already up-to-date!\n",
+      "[nltk_data] Downloading package omw-1.4 to\n",
+      "[nltk_data]     C:\\Users\\DurgaBhavani\\AppData\\Roaming\\nltk_data...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "verb lemma\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data]   Package omw-1.4 is already up-to-date!\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Stemming be funnier than a bummer say the sushi love computer scientist.She really want to buy cars.She tell me angrily.\n",
+      "noun lemma\n",
+      "Stemming is funnier than a bummer say the sushi loving computer scientist.She really want to buy cars.She told me angrily.\n",
+      "adjective lemma\n",
+      "Stemming is funny than a bummer says the sushi loving computer scientist.She really wants to buy cars.She told me angrily.\n",
+      "satellite adjective lemma\n",
+      "Stemming is funny than a bummer says the sushi loving computer scientist.She really wants to buy cars.She told me angrily.\n",
+      "adverb\n",
+      "Stemming is funnier than a bummer says the sushi loving computer scientist.She really wants to buy cars.She told me angrily.\n"
+     ]
+    }
+   ],
+   "source": [
+    "#lemmatization of raw text\n",
+    "nltk.download('wordnet')\n",
+    "nltk.download('omw-1.4')\n",
+    "from nltk.stem import WordNetLemmatizer\n",
+    "text=\"Stemming is funnier than a bummer says the sushi loving computer scientist.She really wants to buy cars.She told me angrily.\"\n",
+    "def lemmatizer():\n",
+    "    wordnet_lemmatizer=WordNetLemmatizer()\n",
+    "    ADJ,ADJ_SAT,ADV,NOUN,VERB='a','s','r','n','v'\n",
+    "    print('verb lemma')\n",
+    "    print(\" \".join([wordnet_lemmatizer.lemmatize(i,pos=\"v\") for i in text.split()]))\n",
+    "    print('noun lemma')\n",
+    "    print(\" \".join([wordnet_lemmatizer.lemmatize(i,pos=\"n\") for i in text.split()]))\n",
+    "    print('adjective lemma')\n",
+    "    print(\" \".join([wordnet_lemmatizer.lemmatize(i,pos=\"a\") for i in text.split()]))\n",
+    "    print('satellite adjective lemma')\n",
+    "    print(\" \".join([wordnet_lemmatizer.lemmatize(i,pos=\"s\") for i in text.split()]))\n",
+    "    print('adverb')\n",
+    "    print(\" \".join([wordnet_lemmatizer.lemmatize(i,pos=\"r\") for i in text.split()]))\n",
+    "if __name__==\"__main__\":\n",
+    "    lemmatizer()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "e2c93867",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "i me my myself we our ours ourselves you you're you've you'll you'd your yours yourself yourselves he him his himself she she's her hers herself it it's its itself they them their theirs themselves what which who whom this that that'll these those am is are was were be been being have has had having do does did doing a an the and but if or because as until while of at by for with about against between into through during before after above below to from up down in out on off over under again further then once here there when where why how all any both each few more most other some such no nor not only own same so than too very s t can will just don don't should should've now d ll m o re ve y ain aren aren't couldn couldn't didn didn't doesn doesn't hadn hadn't hasn hasn't haven haven't isn isn't ma mightn mightn't mustn mustn't needn needn't shan shan't shouldn shouldn't wasn wasn't weren weren't won won't wouldn wouldn't "
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package stopwords to\n",
+      "[nltk_data]     C:\\Users\\DurgaBhavani\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Unzipping corpora\\stopwords.zip.\n"
+     ]
+    }
+   ],
+   "source": [
+    "#list of stop words in english\n",
+    "nltk.download('stopwords')\n",
+    "from nltk.corpus import stopwords\n",
+    "def stopwordlist():\n",
+    "    stopwordlist=stopwords.words('english')\n",
+    "    for s in stopwordlist:\n",
+    "        print(s,end=' ')\n",
+    "if __name__==\"__main__\":\n",
+    "    stopwordlist()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "ef3fd62f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "this is foo.\n"
+     ]
+    }
+   ],
+   "source": [
+    "#removing custom stop words\n",
+    "def customizedstopwordremove():\n",
+    "    stop_words=set([\"hi\",\"bye\"])\n",
+    "    line=\"hi this is foo. bye\"\n",
+    "    return \" \".join(word for word in line.split() if word not in stop_words)\n",
+    "\n",
+    "if __name__==\"__main__\":\n",
+    "    print(customizedstopwordremove())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "1a0dd610",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "this is foo.\n",
+      "----------stop word removal from raw text-----------\n",
+      "test sentence. happy today.\n"
+     ]
+    }
+   ],
+   "source": [
+    "#stop words removal from raw text\n",
+    "def stopwordremove():\n",
+    "    stop=set(stopwords.words('english'))\n",
+    "    sentence=\"this is a test sentence. I am very happy today.\"\n",
+    "    print(\"----------stop word removal from raw text-----------\")\n",
+    "    return \" \".join([i for i in sentence.lower().split() if i not in stop])\n",
+    "def customizedstopwordremove():\n",
+    "    stop_words=set([\"hi\",\"bye\"])\n",
+    "    line=\"hi this is foo. bye\"\n",
+    "    return \" \".join(word for word in line.split() if word not in stop_words)\n",
+    "if __name__==\"__main__\":\n",
+    "    print(customizedstopwordremove())\n",
+    "    print(stopwordremove())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "8640778a",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['Stemming', 'is', 'funnier', 'than', 'a', 'bummer', 'says', 'the', 'sushi', 'loving', 'computet', 'scientist.She', 'really', 'wants', 'to', 'buy', 'cars.She', 'told', 'me', 'angrily.It', 'is', 'better', 'for', 'you.man', 'is', 'walking.We', 'are', 'meeting', 'tomorrow.You', 'really', 'do', \"n't\", 'know', '..', '!']\n"
+     ]
+    }
+   ],
+   "source": [
+    "#word tokenization\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "def word_tokenization():\n",
+    "    content=\"\"\"Stemming is funnier than a bummer says the sushi loving computet scientist.She really wants to buy cars.She told me angrily.It is better for you.man is walking.We are meeting tomorrow.You really don't know..!\"\"\"\n",
+    "    return word_tokenize(content)\n",
+    "if __name__==\"__main__\":\n",
+    "    print(word_tokenization())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "603f9e00",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "-----word lemmatization------\n",
+      "car\n",
+      "walk\n",
+      "meeting\n",
+      "meet\n",
+      "good\n"
+     ]
+    }
+   ],
+   "source": [
+    "#word lemmatization\n",
+    "from nltk.stem.wordnet import WordNetLemmatizer\n",
+    "def word_lemmatization():\n",
+    "    wordlemma=WordNetLemmatizer()\n",
+    "    print(wordlemma.lemmatize('cars'))\n",
+    "    print(wordlemma.lemmatize('walking',pos='v'))\n",
+    "    print(wordlemma.lemmatize('meeting',pos='n'))\n",
+    "    print(wordlemma.lemmatize('meeting',pos='v'))\n",
+    "    print(wordlemma.lemmatize('better',pos='a'))\n",
+    "if __name__==\"__main__\":\n",
+    "    print(\"-----word lemmatization------\")\n",
+    "    word_lemmatization()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "71f95cb1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "No match!!\n",
+      "search:  animals\n"
+     ]
+    }
+   ],
+   "source": [
+    "#difference between match() and search()\n",
+    "import re\n",
+    "def searchvsmatch():\n",
+    "    line=\"I love animals\"\n",
+    "    matchObj=re.match(r'animals',line,re.M | re.I)\n",
+    "    if matchObj:\n",
+    "        print(\"match: \",matchObj.group())\n",
+    "    else:\n",
+    "        print(\"No match!!\")\n",
+    "    searchObj=re.search(r'animals',line,re.M | re.I)\n",
+    "    if searchObj:\n",
+    "        print(\"search: \",searchObj.group())\n",
+    "    else:\n",
+    "        print(\"Nothing found!!\")\n",
+    "if __name__==\"__main__\":\n",
+    "    searchvsmatch()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "e1587c0f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "--------Output of re.findall()-----\n",
+      "['sentence', 'sentence', 'sentence']\n",
+      "\n",
+      "\n",
+      "-------Output of Groups....\n",
+      "1st group----Doe\n",
+      "2nd group----John\n",
+      "3rd group----1111-1212\n",
+      "\n",
+      "\n",
+      "-----output of re.sub()------\n",
+      "Phone Num: 1111-2222-3333 \n",
+      "Revised contactInfo: Doe, Peter: 1111-1212\n"
+     ]
+    }
+   ],
+   "source": [
+    "#basic regex functions\n",
+    "import re\n",
+    "\n",
+    "def basicregex():\n",
+    "    line=\"This is test sentence and test sentence is also a sentence.\"\n",
+    "    contactInfo='Doe, John: 1111-1212'\n",
+    "    print(\"--------Output of re.findall()-----\")\n",
+    "    findallobj=re.findall(r'sentence',line)\n",
+    "    print(findallobj)\n",
+    "    #re.search and group wise extraction\n",
+    "    groupwiseobj=re.search(r'(\\w+), (\\w+): (\\S+)', contactInfo)\n",
+    "    print(\"\\n\")\n",
+    "    print(\"-------Output of Groups....\")\n",
+    "    print(\"1st group----\"+groupwiseobj.group(1))\n",
+    "    print(\"2nd group----\"+groupwiseobj.group(2))\n",
+    "    print(\"3rd group----\"+groupwiseobj.group(3))\n",
+    "   \n",
+    "    #re.sub() replace string \n",
+    "    phone= \"1111-2222-3333 # This is Phone Number\"\n",
+    "\n",
+    "    #Delete Python-style comments\n",
+    "    num=re.sub(r'#.*$',\"\",phone)\n",
+    "    print(\"\\n\")\n",
+    "    print(\"-----output of re.sub()------\")\n",
+    "    print(\"Phone Num:\",num)\n",
+    "    #replace John to Peter in contactInfo\n",
+    "    contactInforevised=re.sub(r'John',\"Peter\",contactInfo)\n",
+    "    print(\"Revised contactInfo:\",contactInforevised)\n",
+    "if __name__==\"__main__\":\n",
+    "    basicregex()  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "364b71f9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Positive lookahead: ['play']\n",
+      "Positive Lookahead character index: (10, 14)\n",
+      "Negative lookahead: ['play']\n",
+      "Negative Lookahead character index: (2, 6)\n",
+      "Positive lookbehind: ['ground']\n",
+      "Positive Lookbehind character index: (14, 20)\n",
+      "Negative lookbehind: ['ground']\n",
+      "Negative Lookbehind character index: (37, 43)\n",
+      "\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "import re\n",
+    "\n",
+    "def advanceregex():\n",
+    "    text = \"I play on playground. It is the best ground.\"\n",
+    "\n",
+    "    # Positive Lookahead\n",
+    "    positivelookaheadobjpattern = re.findall(r'play(?=ground)', text, re.M | re.I)\n",
+    "    print(\"Positive lookahead: \" + str(positivelookaheadobjpattern))\n",
+    "    positivelookaheadobj = re.search(r'play(?=ground)', text, re.M | re.I)\n",
+    "    if positivelookaheadobj:\n",
+    "        print(\"Positive Lookahead character index: \" + str(positivelookaheadobj.span()))\n",
+    "\n",
+    "    # Negative Lookahead\n",
+    "    negativelookaheadobjpattern = re.findall(r'play(?!ground)', text, re.M | re.I)\n",
+    "    print(\"Negative lookahead: \" + str(negativelookaheadobjpattern))\n",
+    "    negativelookaheadobj = re.search(r'play(?!ground)', text, re.M | re.I)\n",
+    "    if negativelookaheadobj:\n",
+    "        print(\"Negative Lookahead character index: \" + str(negativelookaheadobj.span()))\n",
+    "\n",
+    "    # Positive Lookbehind\n",
+    "    positivelookbehindobjpattern = re.findall(r'(?<=play)ground', text, re.M | re.I)\n",
+    "    print(\"Positive lookbehind: \" + str(positivelookbehindobjpattern))\n",
+    "    positivelookbehindobj = re.search(r'(?<=play)ground', text, re.M | re.I)\n",
+    "    if positivelookbehindobj:\n",
+    "        print(\"Positive Lookbehind character index: \" + str(positivelookbehindobj.span()))\n",
+    "\n",
+    "    # Negative Lookbehind\n",
+    "    negativelookbehindobjpattern = re.findall(r'(?<!play)ground', text, re.M | re.I)\n",
+    "    print(\"Negative lookbehind: \" + str(negativelookbehindobjpattern))\n",
+    "    negativelookbehindobj = re.search(r'(?<!play)ground', text, re.M | re.I)\n",
+    "    if negativelookbehindobj:\n",
+    "        print(\"Negative Lookbehind character index: \" + str(negativelookbehindobj.span()))\n",
+    "\n",
+    "    print(\"\\n\")\n",
+    "\n",
+    "if __name__ == \"__main__\":\n",
+    "    advanceregex()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d1c71cb3",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
