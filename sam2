@@ -189,3 +189,98 @@ source code management section.
 Y21ADS412 
 DevOps Lab 
 6. Provide the details under the Post-build Actions.
+Click on Build Now to build the project. Output is displayed in console output. 
+65 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+8. Goto docker directory. 
+9. Create Dockerfile in this directory. 
+10. Goto https://hub.docker.com and create an account 
+66 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+Build a docker image of Tomcat with artifact copied using Ansible playbook: 
+1. Create yml file in docker directory. 
+2.  To check the syntax of ansible playbook. 
+If it doesn’t come then type exit and execute the below command 
+sudo chmod 777 /var/run/docker.sock 
+and now sudo su ansadmin->cd /opt/docker 
+3.  Command to execute Ansible playbook. 
+4.  To view a list of available images. 
+Copy the Image onto the Docker Hub (Manually): 
+1. Login to DockerHub from Ansible instance. 
+2.  Update sample.yml as follows. 
+67 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+If it is in readonly mode give :w! then :wq then yes 
+3. Check the Playbook Status. 
+4. Command to execute Ansible playbook 
+5. Open DockerHub and check under Repositories section 
+Create container on Docker instance using Ansible Playbook: 
+1. Create a new playbook to create a container in Docker instance. 
+68 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+Goto docker instance copy id and open the session 
+2.  Start the docker service 
+3. To change user to ansadmin. 
+4. To view a list of available images. 
+5. To view a list of running and stopped containers. 
+6. To remove the existing containers. 
+7. To view a list of running and stopped containers. 
+8.  To check docker images 
+69 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+9. To remove existing images. 
+10. When we run ansible we get a error to resolve that use the below command. 
+In ansible 
+1. Command to execute Ansible playbook 
+In docker 
+2.  To view a list of available images. 
+3.  To view a list of running and stopped containers 
+Give docker public ip:8082 
+70 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+In ansible 
+Deploy Container using Ansible Playbook using Jenkins: 
+1. Update deploy_sample.yml as follows. 
+In docker machine 
+2. In case if we got any error to resolve it give the below command. 
+In ansible 
+3. Check the Playbook Status. 
+71 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+4.  Command to execute Ansible playbook. 
+Automate using Jenkins: 
+1.  Open Jenkins Dashboard. And click on new item then create a maven project 
+2. Provide the description.Source Code Management as Git and enter Repository URL. 
+72 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+3. In Build, Enter “clean install” in Goals and Options box. 
+4.  Provide the details under Post-build Actions. 
+73 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+5. Click on apply then save , now click on build now and then output can be 
+displayed in console output 
+74 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+6. Check the dockerhub 
+7. To check the content in the docker directory after building the project. 
+8. To view list of containers. 
