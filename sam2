@@ -1,0 +1,191 @@
+Experiment-7:  
+Demonstrate containerization using Docker. 
+1. Goto Aws account and create a new instance. 
+2. Choose amazon linux aws and 64 bit architecture. 
+3.  And choose instance type as t2.micro which is free tier and select the existing key pair. 
+4. Create a security group. 
+45 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+5. Edit the inbound rules port range 8081-8090. Save the rules. 
+6. Successfully instance is created. 
+7. Start the instance. 
+8. MobaXterm: Copy the public Ip of the Docker instance. Start the machine. 
+9. Installing the Docker. 
+46 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+10. Check docker status 
+11. Now start docker 
+12. Again check the status of docker now 
+13. To check docker image 
+14. To check docker container. 
+15. Go to this website https://hub.docker.com  and search for tomcat 
+16. Goto opt directory and create a directory and then move to that directory. 
+47 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+17. pull an image from docker hub 
+18. Check the list of docker images 
+19. Create a docker container and run it 
+20. Check the list of docker containers 
+21. copy the files in webapps.dist folder to webapps folder. 
+22. Now give your publicip:8081 
+48 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+Creating a Dockerfile on your own and it is used to build an image. 
+1. Create Dockerfile using vi editor. 
+2. Build a custom image from a Dockerfile in the current directory. 
+3. Check the list of Docker images. 
+4. Create a docker container and check the running containers 
+5. Now give our publicip:8082 
+49 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+Experiment-8:  
+Docker CI/CD Pipeline using Jenkins. 
+1. Create a user.Set the password to the user. 
+2. Add user to docker group 
+3. Open the file and change Password Authentication from No to Yes. Its better to use 
+nano editor. 
+4. To reload the service 
+5. Open the file and add the permissions to user 
+50 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+6. switch current user to the dockeradmin. Move to the opt directory and check the list of 
+files. 
+7. change the ownership of the docker folder. 
+8. check the files along with permissions. 
+9. create Dockerfile using vi editor. 
+10. Start the Jenkins instance and In Manage Jenkins, click on plugins ,go to available 
+plugins and install publish over ssh 
+51 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+11. Now to click on Manage Jenkins→system 
+12. Click on change password then give dockeradmin 
+52 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+13. Now click on apply and save  
+14. Then go to dashboard and click on new item, enter name and choose maven project 
+15. Give description and all required details. 
+16. Give the repository of maven.git 
+53 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+17. Choose poll scm if output is success or else choose 1st option build whenever a 
+snapshot dependency is built. 
+18. Choose send build artifacts over ssh 
+19. Give your docker instance name and give required details 
+54 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+20. Now click on build now and check the console output. 
+21. Check the docker images 
+22. Check the container. 
+55 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+Experiment-9: 
+Complete Docker CI/CD pipeline using Jenkins and Ansible. 
+1. Create an ansible instance. 
+2. Now launch the instance. 
+3. Now start the instance. Copy the public ip address. 
+56 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+4. Create a ssh session using Public IP and keypair. 
+5. Now change the name of the machine. 
+6.  To create ansible user 
+7. Set the password to the user  
+password:ansadmin 
+8. Open the file and add the permissions to user. 
+57 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+9. Open the file and change Password Authentication from No to Yes. 
+10. To reload the service. 
+11. To switch current user to the ansadmin. 
+12. Command to create SSH key 
+13. To update the packages. 
+58 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+14. Install ansible using the following command. 
+15. Check the ansible 
+Docker 
+1. Now start the Docker Instance. 
+2. Connect the Mobaxterm to Docker instance. 
+59 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+3. Create a ansible user. 
+4. Set the password.
+ 5. Add ansadmin to sudoers file. 
+6. Open the file and change Password Authentication from No to Yes. 
+In Ansible Instance 
+1.  Open /etc/ansible/hosts file and add Docker instance private IP and Ansible 
+instance private IP to it. 
+60 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+2. Change user to ansadmin using the following command. 
+3. To copy private key to Docker instance. 
+4. To test the connection. 
+5. To copy private key to Ansible instance. 
+6. Test the connection. 
+7. Change the current directory to opt directory. 
+8. Create a Docker directory 
+9. Change the ownership of the docker. 
+61 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+10. To check the content under the opt directory. 
+11. Install Docker on Ansible instance. 
+12. To check the status of the docker. 
+13. Add ansadmin to the docker group. 
+14. To check for the user. 
+15. Start the docker. 
+In Jenkins instance 
+1. Start Jenkins instance and open Jenkins dashboard. Then choose manage Jenkins 
+and then system. 
+62 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+2. Provide the required details and click on Test Configuration. 
+(name is our ansible instance and hostname is ansible instance private ip and 
+password is ansadmin) 
+63 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+3. Create a new maven project in Jenkins. 
+4. In Configuration, Enter Description of the project. Provide git repository url under 
+source code management section. 
+5. In Build, Enter “clean install” in Goals and Options box. 
+64 
+4/4 B.Tech DS  
+Y21ADS412 
+DevOps Lab 
+6. Provide the details under the Post-build Actions.
